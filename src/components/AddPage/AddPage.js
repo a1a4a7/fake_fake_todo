@@ -2,7 +2,7 @@ import React from 'react'
 import './AddPage.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addTodo } from '../../actions/index';
+import { addTodo, removeTodo } from '../../actions/index';
 import { useHistory } from "react-router-dom";
 
 
@@ -45,9 +45,9 @@ const AddPage = ({ dispatch }) => {
 
                 </form>
 
-                
- 
-            
+
+
+
             </div>
         </div >
     )

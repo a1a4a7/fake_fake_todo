@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { connect } from 'react-redux'
+import { addTodo, removeTodo } from '../../actions/index';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,26 +20,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function SimpleList(todo) {
 
-  console.log("print@SimpleList " + JSON.stringify(todo.todo.text))
-  // console.log("print@SimpleList " + typeof todo)
+
+const SimpleList = (props) => {
+  console.log("print@SimpleList " + JSON.stringify(props.todo))
 
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} {...props}>
       <List component="nav" aria-label="main mailbox folders">
 
         <ListItem button>
-          <ListItemText primary={todo.todo.id} />
-          <ListItemText primary={todo.todo.text} />
-          <ListItemText primary={todo.todo.heart} />
-
+          <ListItemText primary={props.todo.id} />
+  {/*   */} 
+          <ListItemText primary={props.todo.text} />
+          <ListItemText primary={props.todo.heart} />
+      
           <button className="bbb">
             <FavoriteIcon />
           </button>
 
-          <button className="abc">
+          <button className="abc" onClick={() => removeTodo(props.todo.id)}>
             <CloseIcon />
           </button>
 
@@ -46,6 +49,15 @@ export default function SimpleList(todo) {
       </List>
       <Divider />
 
-    </div >
+    </div>
   );
-}
+};
+
+const mapStateToProps = (state) => ({
+  todos: state.todos
+})
+const mapDispatchToProps = dispatch => ({
+  removeTodo: id => dispatch(removeTodo(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SimpleList) 

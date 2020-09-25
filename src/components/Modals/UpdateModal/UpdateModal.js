@@ -5,15 +5,16 @@ import SimpleList from '../../List/List';
 
 const UpdateModal = (todo) => {
     const [open, setOpen] = React.useState(false)
-    // console.log("print@updateModal "+ JSON.stringify(todo) )
+    console.log("print@updateModal " + JSON.stringify(todo))
 
     return (
         <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={SimpleList(todo)} 
+            trigger={<SimpleList {...todo} />}
         >
+
             <Modal.Header style={{}}>update Module</Modal.Header>
             <Modal.Content image>
 
@@ -28,7 +29,7 @@ const UpdateModal = (todo) => {
             <Modal.Actions>
                 <Button color='black' onClick={() => setOpen(false)}>
                     Close
-        </Button>
+                </Button>
                 <Button
                     content="Update"
                     labelPosition='right'
@@ -38,6 +39,7 @@ const UpdateModal = (todo) => {
                 />
             </Modal.Actions>
         </Modal>
+
     )
 }
 

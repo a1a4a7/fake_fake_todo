@@ -4,6 +4,10 @@ import AddComponent from './components/AddComponent/AddComponent';
 import RemoveComponent from './components/RemoveComponent/RemoveComponent';
 // import ModalExampleShorthand from './components/Modals/AddModal/AddModal';
 import UndoRedo from './containers/UndoRedo';
+import 'semantic-ui-css/semantic.min.css';
+
+
+
 
 
 function App() {
@@ -19,6 +23,7 @@ function App() {
       <AddComponent />
       <RemoveComponent />
       <UndoRedo />
+
 
     </div>
   );

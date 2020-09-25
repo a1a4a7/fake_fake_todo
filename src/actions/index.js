@@ -15,3 +15,9 @@ export const addTodo = (text) => ({
     text: text.iinput,
     descr: text.iinput2
 })
+
+export const removeTodo = (text) => ({
+
+    type: 'REMOVE_TODO',
+    id: text.id
+})

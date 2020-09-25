@@ -14,7 +14,9 @@ const todos = (state = [], action) => {
                     heart: action.heart
                 }
             ]
-
+        case 'REMOVE_TODO':
+            // console.log(JSON.stringify(state.filter(id => id !== action.id)))
+            return state.filter(id => id !== action.id)
         default:
             return state
     }
@@ -29,7 +31,12 @@ const todoss = (state = [], action) => {
                 ...state,
                 todos(undefined, action)
             ]
-        
+        case 'REMOVE_TODO':
+            // console.log(JSON.stringify(state.filter(id => id !== action.id)))
+            return [
+                ...state,
+                todos(undefined, action)
+            ]
         default:
             return state
     }
